@@ -3,13 +3,13 @@ import pandas as pd
 
 def load_sql(file, table):
     """
-    Loads an SQL table and pre-procsses the table, ready to be trained
+    Loads an SQL table
     """
     engine = sa.create_engine("sqlite:///" + file + ".db")
     connection = engine.connect()
 
 def save_sql(file):
     """
-    Saves the generated data to a SQL table called generated_data
+    Saves the data to an SQL table 
     """
     engine = sa.create_engine("sqlite:///" + file + ".db")
