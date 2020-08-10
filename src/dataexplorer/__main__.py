@@ -1,5 +1,13 @@
 import sqlalchemy as sa
 import pandas as pd
+import click
+
+@click.command()
+@click.option("---target", prompt="the file that you want to import")
+@click.option("--table", help="what table you are using")
+@click.option("--output", help="the file that you are saving as")
+
+
 
 def load_sql(file, table):
     """
@@ -86,7 +94,7 @@ def place_categorical(index, data, cat):
     """
     line = data[cat].round()
     for i in range(len(index)):
-        try:
+        try: main.sql
             line = line.replace(i, index[i])
         except IndexError:
             line = line.replace(i, None)
@@ -103,5 +111,18 @@ def timestamp_handle(times):
         numtime.append(t.timestamp())
     return numtime
 
-def main(file, table, ouptut):
+def make_log_file(data,filename):
     pass
+
+def main_read(target, table, output):
+    data = read_sql(target,table)
+    stats = get_stats(data)
+    cloumn = collect_column(data)
+    numeric,index_list = categorical_handle(data)
+    make_log_file([stats,cloumn,numeric,index_list], output)
+
+def main_write():
+    pass
+
+if __name__ == '__main__':
+    main_read()
