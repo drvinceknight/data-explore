@@ -112,16 +112,32 @@ def timestamp_handle(times):
     return numtime
 
 def make_log_file(data,filename):
+    """
+    makes a log file
+    """
+    pass
+
+def export_numeric(numeric):
+    """
+    export the numeric vertion of the database to be used in other code
+    """
     pass
 
 def main_read(target, table, output):
+    """
+    read data and logs it
+    """
     data = read_sql(target,table)
     stats = get_stats(data)
     cloumn = collect_column(data)
     numeric,index_list = categorical_handle(data)
-    make_log_file([stats,cloumn,numeric,index_list], output)
+    make_log_file([stats,cloumn,index_list], output)
+    export_numeric(numeric)
 
 def main_write():
+    """
+    write data
+    """
     pass
 
 if __name__ == '__main__':
