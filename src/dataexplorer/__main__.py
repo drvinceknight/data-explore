@@ -1,12 +1,13 @@
+import click
 import sqlalchemy as sa
 import pandas as pd
-import click
 import logging
 
-@click.command()
-@click.option("--target", help="the file that you want to import")
-@click.option("--table", help="what table you are using")
-@click.option("--output", help="the file that you are saving as")
+
+#@click.command()
+#@click.option("--target", help="the file that you want to import")
+#@click.option("--table", help="what table you are using")
+#@click.option("--output", help="the file that you are saving as")
 
 def load_sql(file, table):
     """
@@ -38,6 +39,7 @@ def main(target, table, output):
     data = load_sql(target,table)
     stats = get_stats(data)
     make_log_file(stats, output)
+    
 
 if __name__ == '__main__':
     main()
