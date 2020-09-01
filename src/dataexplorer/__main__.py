@@ -35,7 +35,7 @@ def make_log_file(data,filename):
     """
     makes a log file
     """
-    logging.basicConfig(filename='test.log', level=logging.INFO,
+    logging.basicConfig(filename=filename, level=logging.INFO,
                     format='%(asctime)s:%(levelname)s: \n%(message)s')
     logging.info(data)
 

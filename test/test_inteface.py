@@ -1,5 +1,7 @@
 import subprocess
 import dataexplorer
+import os
+
 def test_help():
     exp_output=b"""Usage: __main__.py [OPTIONS]\n\n  read data and logs it\n
 Options:
@@ -13,4 +15,5 @@ Options:
 def test_main_func():
     out=subprocess.run(["python","-m","dataexplorer","--target=flight","--table=readings","--output=test"])
     assert out.returncode == 0
-#subprocess.run(["command","agument1,..."],catarer_output=True))
+    assert os.path.isfile("test.log")
+    assert os.stat('test.log').st_size > 0
