@@ -7,7 +7,7 @@ import logging
 @click.option("--target", help="the file that you want to import")
 @click.option("--table", help="what table you are using")
 @click.option("--output", help="the file that you are saving as")
-@click.option("--convert",help="the file extention you like to convert to")
+@click.option("--convert",help="the file extention you like to convert to",default=None)
 
 def main(target, table, output,convert):
     """
@@ -26,7 +26,8 @@ def main(target, table, output,convert):
         return None#raise Error("file type not supported")
     stats = get_stats(data)
     make_log_file(stats, output)
-    save_file(data,convert)
+    if convert != None:
+        save_file(data,convert,name)
 
 def save_file(data,convert,name):
     if convert == 'db':
