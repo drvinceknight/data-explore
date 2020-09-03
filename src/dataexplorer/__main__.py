@@ -20,8 +20,6 @@ def main(target, table, output,convert):
         data = pandas.read_csv(target)
     elif extention == 'json':
         data = pandas.read_json(target)
-    elif extention == 'sav':
-        data = pandas.read_spss(target)
     else:
         return None#raise Error("file type not supported")
     stats = get_stats(data)
@@ -33,11 +31,9 @@ def save_file(data,convert,name):
     if convert == 'db':
         save_sql(data,name,'table')
     elif convert == 'csv':
-        pass
+        data.to_csv(name)
     elif convert == 'json':
-        pass
-    elif convert == 'sav':
-        pass
+        data.to_json(name)
     else:
         return None
 
