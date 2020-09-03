@@ -1,1 +1,6 @@
 *.db
+*.log
+gan/
+dataexplorer.egg-info/
+__pycache__/
+test/data/
