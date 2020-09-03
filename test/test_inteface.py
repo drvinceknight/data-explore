@@ -18,3 +18,15 @@ def test_main_func():
     assert out.returncode == 0
     assert os.path.isfile("test.log")
     assert os.stat('test.log').st_size > 0
+
+def test_convert():
+    out=subprocess.run(["python","-m","dataexplorer","--target=flight.db","--table=readings","--convert=csv"])
+    assert out.returncode == 0
+    assert os.stat('flight.csv').st_size > 0
+    out=subprocess.run(["python","-m","dataexplorer","--target=flight.csv","--convert=json"])
+    assert out.returncode == 0
+    assert os.stat('flight.json').st_size > 0
+    subprocess.call(['rm','flight.db'])
+    out=subprocess.run(["python","-m","dataexplorer","--target=flight.json","--table=readings","--convert=db"])
+    assert out.returncode == 0
+    assert os.stat('flight.db').st_size > 0

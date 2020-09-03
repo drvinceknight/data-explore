@@ -5,8 +5,8 @@ import logging
 
 @click.command()
 @click.option("--target", help="the file that you want to import")
-@click.option("--table", help="what table you are using")
-@click.option("--output", help="the file that you are saving as")
+@click.option("--table", help="what table you are using",default=None)
+@click.option("--output", help="the file that you are saving as",default=None)
 @click.option("--convert",help="the file extention you like to convert to",default=None)
 
 def main(target, table, output,convert):
@@ -17,23 +17,24 @@ def main(target, table, output,convert):
     if extention == 'db':
         data = load_sql(name,table)
     elif extention == 'csv':
-        data = pandas.read_csv(target)
+        data = pd.read_csv(target)
     elif extention == 'json':
-        data = pandas.read_json(target)
+        data = pd.read_json(target)
     else:
         return None#raise Error("file type not supported")
-    stats = get_stats(data)
-    make_log_file(stats, output)
+    if output != None:
+        stats = get_stats(data)
+        make_log_file(stats, output)
     if convert != None:
-        save_file(data,convert,name)
+        save_file(data,convert,name,table)
 
-def save_file(data,convert,name):
+def save_file(data,convert,name,table):
     if convert == 'db':
-        save_sql(data,name,'table')
+        save_sql(data,name,table)
     elif convert == 'csv':
-        data.to_csv(name)
+        data.to_csv(name + ".csv")
     elif convert == 'json':
-        data.to_json(name)
+        data.to_json(name + ".json")
     else:
         return None
 
