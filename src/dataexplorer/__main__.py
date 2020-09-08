@@ -21,7 +21,7 @@ def load_sql(file, table):
     """
     Loads an SQL table
     """
-    engine = sa.create_engine("sqlite:///" + file + ".db")
+    engine = sa.create_engine("sqlite:///" + file)
     connection = engine.connect()
     database = pd.read_sql(table, connection)
     return database

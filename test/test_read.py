@@ -3,7 +3,7 @@ import pandas
 
 
 def test_load_sql():
-    df = dataexplorer.load_sql("flight", "readings")
+    df = dataexplorer.load_sql("flight.db", "readings")
     assert isinstance(df, pandas.DataFrame)
 
 
