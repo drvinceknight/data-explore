@@ -1,13 +1,17 @@
 import dataexplorer
 import pandas
 
+
 def test_load_sql():
-    df = dataexplorer.load_sql('flight','readings')
-    assert isinstance(df,pandas.DataFrame)
+    df = dataexplorer.load_sql("flight", "readings")
+    assert isinstance(df, pandas.DataFrame)
+
 
 def test_get_stats():
-    set = pandas.DataFrame(data = {'a':[1,2,3],'b':[2,3,4],'c':['com','com','sum']})
-    stats =  dataexplorer.get_stats(set)
+    set = pandas.DataFrame(
+        data={"a": [1, 2, 3], "b": [2, 3, 4], "c": ["com", "com", "sum"]}
+    )
+    stats = dataexplorer.get_stats(set)
     result = """         a    b
 count  3.0  3.0
 mean   2.0  3.0
