@@ -1,33 +1,33 @@
-## A tool to capture information about the general structure of an sql database
+## A tool to capture information about the general structure of tables within an sql database
+
+The tool computes:
+the number of records in a table of a given database (count), the mean value of all records in the table (mean) as well as their standard deviation (std), and their (0%, 25%, 50%, 75%, 100%) quartile
 
 ### Installation
 
-To install:
+To install, enter the following commands:
 
-    $ git clone <git address>
-    $ cd sql-explore
-    $ python setup.py develop 
+    $ git clone https://github.com/Tompoudurans/data-explore
+    $ cd data-explore
+    $ python setup.py develop
 
+### Utilisation
 
-### Use:
+After installation,
+For any table within a database, the tool can be run entering the following command:
 
-Given a file `main.sql` after installation we can run the tool using:
+    $ data-explore --target=DATABASE --table=TABLE --output=LOG
 
-    sql-explore --target main.sql --output main.log
+The LOG file  produced by this command will contain all the information about the general structure of the TABLE held in DATABASE.
 
-
-The `main.log` file will contain all the information about `main.sql`.
-
-### Options:
-  --target TEXT  the file that you want to import
-  --table TEXT   what table you are using
-  --output TEXT  the file that you are saving as
-  --help         Show this message and exit.
-
+### Notation of the commands
+DATABASE - Insert here the name of the database file that you want to import it needs to be in .db format
+TABLE - Insert here the table within the database that need to be analysed
+LOG - Insert here the name of the output file, this name needs to end with .log
 
 ### Test
 
-To test the basic functionality, after installing:
+If the tool needs to be tested after installing, enter the following commands:
 
-    python -m pip install pytest. # If pytest is not already installed
-    python -m pytest
+  $  python -m pip install pytest. # If pytest is not already installed
+  $  python -m pytest

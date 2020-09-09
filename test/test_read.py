@@ -5,6 +5,9 @@ from randomdatagen import generate_random_testing_data
 
 
 def test_load_sql():
+    """
+    test to check if the function loads a database correctly
+    """
     if not os.path.isfile("flight.db"):
         generate_random_testing_data(20)
     df = dataexplorer.load_sql("flight", "readings")
@@ -12,6 +15,9 @@ def test_load_sql():
 
 
 def test_get_stats():
+    """
+    test to check that see the stats are calcuated correctly
+    """
     set = pandas.DataFrame(
         data={"a": [1, 2, 3], "b": [2, 3, 4], "c": ["com", "com", "sum"]}
     )

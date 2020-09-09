@@ -5,6 +5,9 @@ from randomdatagen import generate_random_testing_data
 
 
 def test_make_log_file():
+    """
+    test to check that the function works and that a log file has been created
+    """
     if os.path.isfile("secondtest.log"):
         log_file = pathlib.Path("secondtest.log")
         log_file.unlink()
