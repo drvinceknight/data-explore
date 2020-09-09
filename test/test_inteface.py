@@ -13,7 +13,7 @@ Options:
     assert currunt_output.stdout == exp_output
 
 def test_main_func():
-    out=subprocess.run(["python","-m","dataexplorer","--target=flight","--table=readings","--output=test"])
+    out=subprocess.run(["python","-m","dataexplorer","--target=flight","--table=readings","--output=test.log"])
     assert out.returncode == 0
     assert os.path.isfile("test.log")
     assert os.stat('test.log').st_size > 0
