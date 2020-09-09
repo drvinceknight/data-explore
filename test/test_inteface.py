@@ -1,6 +1,7 @@
 import subprocess
 import dataexplorer
 import os
+from randomdatagen import generate_random_testing_data
 
 
 def test_help():
@@ -17,6 +18,10 @@ Options:
 
 
 def test_main_func():
+    try:
+        generate_random_testing_data(20)
+    except Exception:
+        pass
     out = subprocess.run(
         [
             "python",
