@@ -12,7 +12,9 @@ def generate_random_testing_data(size):
     """
     engine = sa.create_engine("sqlite:///flight.db")
     connection = engine.connect()
-    Reading = namedtuple("Reading", "flight, ts, temp, pressure, humidity, wind")
+    Reading = namedtuple(
+        "Reading", "flight, ts, temp, pressure, humidity, wind"
+    )
 
     sql = """
     CREATE TABLE readings (
