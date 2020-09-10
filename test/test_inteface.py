@@ -6,16 +6,22 @@ from randomdatagen import generate_random_testing_data
 
 
 def test_help():
-    exp_output = b"""Usage: __main__.py [OPTIONS]\n\n  read data and logs it\n
+    exp_output = b"""Usage: __main__.py [OPTIONS]
+
+  read data and logs it
+
 Options:
   --target TEXT  the file that you want to import
   --table TEXT   what table you are using
   --output TEXT  the file that you are saving as
-  --help         Show this message and exit.\n"""
-    currunt_output = subprocess.run(
+  --help         Show this message and exit.
+"""
+    current_output = subprocess.run(
         ["python", "-m", "dataexplorer", "--help"], capture_output=True
     )
-    assert currunt_output.stdout == exp_output
+    if os.name == 'nt':
+        exp_output = exp_output.replace(b"\n",b"\r\n")
+    assert current_output.stdout == exp_output
 
 
 def test_main_func():
