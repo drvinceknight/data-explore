@@ -1,6 +1,7 @@
 import subprocess
 import dataexplorer
 import os
+import pathlib
 from randomdatagen import generate_random_testing_data
 
 
@@ -18,6 +19,9 @@ Options:
 
 
 def test_main_func():
+    if os.path.isfile("testing.log"):
+        log_file = pathlib.Path("testing.log")
+        log_file.unlink()
     if not os.path.isfile("flight.db"):
         generate_random_testing_data(20)
     out = subprocess.run(
