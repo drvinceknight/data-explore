@@ -1,13 +1,13 @@
 import dataexplorer
-import os
+import os.path
+import pathlib
 from randomdatagen import generate_random_testing_data
 
+
 def test_make_log_file():
-    try:
+    if not os.path.isfile("flight.db"):
         generate_random_testing_data(20)
-    except Exception:
-        pass
     set = dataexplorer.load_sql("flight", "readings")
     stats = dataexplorer.get_stats(set)
-    dataexplorer.make_log_file(stats, "test")
-    assert os.path.isfile("test.log")
+    dataexplorer.make_log_file(stats, "testing")
+    assert os.path.isfile("testing.log")

@@ -18,10 +18,8 @@ Options:
 
 
 def test_main_func():
-    try:
+    if not os.path.isfile("flight.db"):
         generate_random_testing_data(20)
-    except Exception:
-        pass
     out = subprocess.run(
         [
             "python",
@@ -29,9 +27,9 @@ def test_main_func():
             "dataexplorer",
             "--target=flight",
             "--table=readings",
-            "--output=test.log",
+            "--output=testing.log",
         ]
     )
     assert out.returncode == 0
-    assert os.path.isfile("test.log")
-    assert os.stat("test.log").st_size > 0
+    assert os.path.isfile("testing.log")
+    assert os.stat("testing.log").st_size > 0

@@ -1,12 +1,12 @@
 import dataexplorer
 import pandas
+import os
 from randomdatagen import generate_random_testing_data
 
+
 def test_load_sql():
-    try:
+    if not os.path.isfile("flight.db"):
         generate_random_testing_data(20)
-    except Exception:
-        pass
     df = dataexplorer.load_sql("flight", "readings")
     assert isinstance(df, pandas.DataFrame)
 
