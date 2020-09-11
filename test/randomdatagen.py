@@ -8,7 +8,7 @@ import pandas as pd
 
 def generate_random_testing_data(size):
     """
-    create random testing data 3 numrical 2 catgorical and 1 time, with size*3 number of record  
+    create random testing data 3 numrical 2 catgorical and 1 time, with size*3 number of record
     """
     engine = sa.create_engine("sqlite:///flight.db")
     connection = engine.connect()

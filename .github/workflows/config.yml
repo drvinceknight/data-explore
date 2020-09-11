@@ -28,7 +28,7 @@ jobs:
         python -m pip install pytest-cov
         python -m pip install pytest-sugar
         python -m pip install pytest-randomly
-        python -m pip install black
+        python -m pip install black==20.8b1
     - name: Check format (only on py3.8 and ubuntu)
       if: matrix.python-version == 3.8 && matrix.os == 'ubuntu-latest'
       run: |
