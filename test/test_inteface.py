@@ -19,8 +19,8 @@ Options:
     current_output = subprocess.run(
         ["python", "-m", "dataexplorer", "--help"], capture_output=True
     )
-    if os.name == 'nt':
-        exp_output = exp_output.replace(b"\n",b"\r\n")
+    if os.name == "nt":
+        exp_output = exp_output.replace(b"\n", b"\r\n")
     assert current_output.stdout == exp_output
 
 
