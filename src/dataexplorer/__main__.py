@@ -5,10 +5,17 @@ import logging
 
 
 @click.command()
-@click.option("--target", help="Insert here the name of the database file that you want to import it needs to be in .db format")
-@click.option("--table", help="Insert here the table within the database that need to be analysed")
-@click.option("--output", help="Insert here the name of the output file, this name needs to end with .log")
-
+@click.option(
+    "--target",
+    help="Insert here the name of the database file that you want to import it needs to be in .db format",
+)
+@click.option(
+    "--table", help="Insert here the table within the database that need to be analysed"
+)
+@click.option(
+    "--output",
+    help="Insert here the name of the output file, this name needs to end with .log",
+)
 def main(target, table, output):
     """
     reads data and saves basic stats for the dataset into a log file

@@ -11,9 +11,15 @@ def test_help():
   reads data and saves basic stats for the dataset into a log file
 
 Options:
-  --target TEXT  Insert here the name of the database file that you want to import it needs to be in .db format
-  --table TEXT   Insert here the table within the database that need to be analysed
-  --output TEXT  Insert here the name of the output file, this name needs to end with .log
+  --target TEXT  Insert here the name of the database file that you want to
+                 import it needs to be in .db format
+
+  --table TEXT   Insert here the table within the database that need to be
+                 analysed
+
+  --output TEXT  Insert here the name of the output file, this name needs to
+                 end with .log
+
   --help         Show this message and exit.
 """
     current_output = subprocess.run(
