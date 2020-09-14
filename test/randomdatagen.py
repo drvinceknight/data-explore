@@ -5,15 +5,15 @@ from random import uniform, randint
 import sqlalchemy as sa
 import pandas as pd
 
+
 def generate_random_testing_data(size):
     """
-    create random testing data 3 numrical 2 catgorical and 1 time, with size*3 number of record  
+    create random testing data 3 numrical 2 catgorical and 1 time, with size*3 number of record
     """
-    engine = sa.create_engine('sqlite:///flight.db')
+    engine = sa.create_engine("sqlite:///flight.db")
     connection = engine.connect()
-    Reading = namedtuple('Reading', 'flight, ts, temp, pressure, humidity, wind')
-    
-    
+    Reading = namedtuple("Reading", "flight, ts, temp, pressure, humidity, wind")
+
     sql = """
     CREATE TABLE readings (
         flight    VARCHAR(10) NOT NULL,
@@ -30,27 +30,35 @@ def generate_random_testing_data(size):
     )
     """
     connection.execute(sql)
-    winds = ['strong','medium','weak']
+    winds = ["strong", "medium", "weak"]
     readings = [
         Reading(
             flight=flights,
-            ts=f'2015-01-01 09:{str(i+1).zfill(2)}:00',
+            ts=f"2015-01-01 09:{str(i+1).zfill(2)}:00",
             temp=round(uniform(23, 27), 1),
             pressure=randint(1020, 1050),
             humidity=randint(30, 50),
-            wind= winds[randint(0, 2)])
-        for flights in ['hab1', 'hab2', 'hab3']
+            wind=winds[randint(0, 2)],
+        )
+        for flights in ["hab1", "hab2", "hab3"]
         for i in range(size)
     ]
-    
+
     sql = """
         INSERT INTO readings
             (flight, ts, temp, pressure, humidity, wind)
         VALUES
             (?, ?, ?, ?, ?, ?)
     """
-    
+
     for reading in readings:
-        values = (reading.flight, reading.ts, reading.temp, reading.pressure, reading.humidity,reading.wind)
+        values = (
+            reading.flight,
+            reading.ts,
+            reading.temp,
+            reading.pressure,
+            reading.humidity,
+            reading.wind,
+        )
         connection.execute(sql, values)
-    return pd.read_sql('readings',connection)
+    return pd.read_sql("readings", connection)
