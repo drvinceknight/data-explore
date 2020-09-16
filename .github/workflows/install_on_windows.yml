@@ -28,4 +28,4 @@ jobs:
     - name: Activate and Check that help command runs
       run: |
         data-explore\Scripts\activate.bat
-        data-explorer --help
+        python -m dataexplorer --help

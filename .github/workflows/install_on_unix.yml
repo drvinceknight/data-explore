@@ -30,4 +30,4 @@ jobs:
       run: |
         source data-explore/bin/activate
         which python
-        data-explorer --help
+        python -m dataexplorer --help
