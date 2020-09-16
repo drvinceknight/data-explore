@@ -21,15 +21,15 @@ jobs:
     - name: Create virtual environment
       run: |
         python -m venv data-explore
-    - name: Create virtual environment
-      run: |
-        python -m venv data-explore
     - name: Activate virtual environment
       run: |
         source data-explore/bin/activate
+        which python
     - name: Install
       run: |
+        which python
         python setup.py develop
     - name: Check that help command runs
       run: |
+        which python
         data-explore --help

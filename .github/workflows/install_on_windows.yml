@@ -21,9 +21,6 @@ jobs:
     - name: Create virtual environment
       run: |
         python -m venv data-explore
-    - name: Create virtual environment
-      run: |
-        python -m venv data-explore
     - name: Activate virtual environment
       run: |
         data-explore\Scripts\activate.bat
