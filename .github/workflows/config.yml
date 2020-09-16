@@ -37,3 +37,17 @@ jobs:
       run: |
         python setup.py develop
         python -m pytest -p no:logging --cov src/ --cov-fail-under=100
+    - name: check readme
+      run: |
+        python -m pip install venv
+        python -m venv data-explore
+      if: matrix.os == 'windows-latest'
+        run: |
+          C:\> data-explore\Scripts\activate.bat
+      else:
+        run: |
+          source data-explore/bin/activate
+      run: |
+      # assuming that we are already in the correct folder
+          python setup.py develop
+          python src/dataexplorer --target=flight --table=readings --output=fights.log
