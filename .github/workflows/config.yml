@@ -1,4 +1,4 @@
-name: data exprore testing
+name: data explore testing
 
 on: [push, pull_request]
 
