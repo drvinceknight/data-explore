@@ -29,7 +29,6 @@ jobs:
         data-explore\Scripts\activate.bat
     - name: Install
       run: |
-        cd data-explore
         python setup.py develop
     - name: Check that help command runs
       run: |

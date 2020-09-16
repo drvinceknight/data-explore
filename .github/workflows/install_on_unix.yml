@@ -29,7 +29,6 @@ jobs:
         source data-explore/bin/activate
     - name: Install
       run: |
-        cd data-explore
         python setup.py develop
     - name: Check that help command runs
       run: |
