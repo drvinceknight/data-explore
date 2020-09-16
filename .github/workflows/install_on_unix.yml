@@ -1,6 +1,6 @@
 name: Test installation instructions on unix
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
