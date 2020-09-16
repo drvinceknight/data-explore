@@ -9,33 +9,43 @@ To be able to install the software, it is necessary first to have a version of g
 as well as a version of python 3.7 or 3.8 (this software has not been tested for further versions).
 Also its is important that pip is installed.
 
-### Virtual environment
+### Installation
 
-If the tool needs to be run on an separate environment first, the following commands need to be run before the installation:
+#### Basic software requirements
 
-$ pip install venv
+To install, the following is assumed to be available:
 
-Then create the `<environment>` that the code will be run on :
+- Python 3.7 or 3.8 (the software might work on other versions but it is only tested on 3.7 or 3.8).
+- A recent version of git.
 
-$ python -m venv <environment>
+If those are not available please get in touch with the maintainer for alternative ways of installing.
+
+#### Virtual environment
+
+It is recommended to run the software using a Python virtual environment (this ensures that different dependencies are isolated).
+
+To setup the environment, run the following in a command line tool:
+
+    $ python -m venv data-explore
 
 Once the virtual environment is created, it needs to be activated with the following commands:
 
 On Windows, run:
 
-`<environment> \Scripts\activate.bat`
+    C:\> data-explore\Scripts\activate.bat
 
-On Unix or MacOS, run:
+On unix (linux or OS X):
 
-source `<environment>`/bin/activate
+    source data-explore/bin/activate
 
-### Installation
+#### Installation
 
-Open the terminal and enter the following commands:
+The following commands will download and install the software
 
     $ git clone https://github.com/Tompoudurans/data-explore
     $ cd data-explore
     $ python setup.py develop
+
 
 ### Utilisation
 
